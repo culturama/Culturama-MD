@@ -36,14 +36,14 @@ fun SplashScreen (
         targetValue = if (startAnimation) 1f else 0f,
         animationSpec = tween(
             durationMillis = 3000
-        )
+        ), label = ""
     )
 
     LaunchedEffect(key1 = true) {
         startAnimation = true
         delay(4000)
         navController.popBackStack()
-        navController.navigate(Screen.Home.route)
+        navController.navigate(Screen.OnBoarding.route)
     }
 
     Splash(alpha = alphaAnimation.value)

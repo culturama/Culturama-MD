@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.culturama.ui.navigation.Screen
+import com.example.culturama.ui.screen.boarding.OnBoardingScreen
 import com.example.culturama.ui.screen.splash.SplashScreen
 
 @Composable
@@ -20,6 +21,10 @@ fun CulturamaApp (
     ) {
         composable(route = Screen.Splash.route) {
             SplashScreen(navController)
+        }
+
+        composable(route = Screen.OnBoarding.route) {
+            OnBoardingScreen(navController)
         }
 
         composable(route = Screen.Home.route) {
