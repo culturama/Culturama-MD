@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -62,6 +64,23 @@ dependencies {
 
     //navigation compose
     implementation("androidx.navigation:navigation-compose:2.7.5")
+
+    //splash API
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+    //data store
+    implementation("androidx.datastore:datastore-android:1.1.0-alpha07")
+    implementation("androidx.datastore:datastore-core-android:1.1.0-alpha07")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences-android:1.1.0-alpha07")
+
+    //dagger hitl
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-compiler:2.44")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    //Accompanist
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
 
     testImplementation("junit:junit:4.13.2")
 
