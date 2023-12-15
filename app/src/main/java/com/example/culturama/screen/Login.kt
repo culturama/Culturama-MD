@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
@@ -61,7 +62,10 @@ fun LoginPage(navController: NavHostController) {
         val username = remember { mutableStateOf(TextFieldValue()) }
         val password = remember { mutableStateOf(TextFieldValue()) }
 
-        Text(text = "Login", style = TextStyle(fontSize = 40.sp, fontFamily = MaterialTheme.typography.defaultFontFamily!!))
+        Text(
+            text = "Culturama", // Replace with your actual app name or any desired text
+            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
+        )
 
         Spacer(modifier = Modifier.height(20.dp))
         TextField(
