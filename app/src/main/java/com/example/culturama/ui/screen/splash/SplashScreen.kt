@@ -1,6 +1,5 @@
 package com.example.culturama.ui.screen.splash
 
-import android.window.SplashScreen
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -19,17 +18,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.example.culturama.ui.theme.Teal200
 import com.example.culturama.R
-import com.example.culturama.ui.navigation.Screen
 import com.example.culturama.ui.theme.CulturamaTheme
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen (
-    navController: NavHostController
+//    navController: NavHostController
 ) {
     var startAnimation by remember { mutableStateOf(false) }
     val alphaAnimation = animateFloatAsState(
@@ -42,8 +38,8 @@ fun SplashScreen (
     LaunchedEffect(key1 = true) {
         startAnimation = true
         delay(4000)
-        navController.popBackStack()
-        navController.navigate(Screen.OnBoarding.route)
+//        navController.popBackStack()
+//        navController.navigate(Screen.OnBoarding.route)
     }
 
     Splash(alpha = alphaAnimation.value)

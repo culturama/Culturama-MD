@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -22,17 +21,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.culturama.ui.navigation.Screen
 import com.example.culturama.ui.theme.CulturamaTheme
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnBoardingScreen (
-    navController: NavHostController
+//    navController: NavHostController
+    event: (OnBoardingEvent) -> Unit
 ) {
     Column (
         modifier = Modifier.fillMaxSize()
@@ -90,8 +87,9 @@ fun OnBoardingScreen (
                     text = buttonState.value[1],
                     onClick = {
                         scope.launch {
-                            if (pagerState.currentPage == 3) {
-                                navController.navigate(Screen.Home.route)
+                            if (pagerState.currentPage == 2) {
+//                                navController.navigate(Screen.Home.route)
+                                event(OnBoardingEvent.SaveAppEntry)
                             } else {
                                 pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                             }
@@ -109,6 +107,6 @@ fun OnBoardingScreen (
 fun OnBoardingScreenPreview() {
     CulturamaTheme {
         val navController = rememberNavController() // Assuming you are using Navigation component
-        OnBoardingScreen(navController = navController)
+        OnBoardingScreen(event = {})
     }
 }
