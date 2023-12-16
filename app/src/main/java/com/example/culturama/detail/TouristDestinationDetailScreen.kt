@@ -15,10 +15,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -37,11 +40,41 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.culturama.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TouristDestinationDetailScreen() {
+
+    // Menggunakan state untuk menyimpan query pencarian
+    val query = remember { mutableStateOf("") }
+
+    // Membuat text field untuk memasukkan query pencarian
+    OutlinedTextField(
+        value = query.value,
+        onValueChange = { query.value = it },
+        label = { Text(text = stringResource(R.string.search_area)) },
+        trailingIcon = {
+            Icon(
+                imageVector = Icons.Default.Clear,
+                contentDescription = null,
+                modifier = Modifier.clickable { /* TODO: tambahkan aksi hapus query */ }
+            )
+        },
+        modifier = Modifier.fillMaxWidth(),
+        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text)
+    )
+
+    // Membuat lazy column untuk menampilkan daftar daerah
+    LazyColumn {
+        items(areas) { area ->
+            // Membuat komponen untuk setiap daerah
+            AreaItem(area = area)
+        }
+    }
+}
     // Membuat scaffold dengan app bar dan konten
     Scaffold(
         topBar = {

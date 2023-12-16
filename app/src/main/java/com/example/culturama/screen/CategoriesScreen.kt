@@ -14,10 +14,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +28,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.culturama.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoriesScreen() {
     // Membuat data sumber untuk kategori
@@ -36,11 +39,12 @@ fun CategoriesScreen() {
     )
 
     // Membuat scaffold dengan app bar dan konten
+    // Membuat scaffold dengan app bar dan konten
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(R.string.categories_screen)) },
-                backgroundColor = MaterialTheme.colors.primary
+                backgroundColor = MaterialTheme.colorScheme.primary
             )
         },
         content = {
@@ -68,6 +72,8 @@ data class Category(
 // Komponen untuk menampilkan item kategori
 @Composable
 fun CategoryItem(category: Category) {
+    // ...
+
     // Membuat surface dengan bentuk persegi panjang berpinggir bulat
     Surface(
         shape = RoundedCornerShape(8.dp),
@@ -87,7 +93,7 @@ fun CategoryItem(category: Category) {
             Icon(
                 painter = painterResource(category.icon),
                 contentDescription = stringResource(category.name),
-                tint = MaterialTheme.colors.secondary,
+                tint = MaterialTheme.colorScheme.secondary,
                 modifier = Modifier.size(48.dp)
             )
             // Membuat spasi horizontal
