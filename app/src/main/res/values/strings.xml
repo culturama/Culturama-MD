@@ -6,4 +6,8 @@
     <string name="local_culinary">Kuliner Lokal</string>
     <string name="traditional_building">Bangunan Tradisional</string>
     <string name="destinations">%d Destinasi</string>
+
+    <string name="search_area">Cari Daerah</string>
+    <string name="search">Cari</string>
+    <string name="search_results">%d Hasil Pencarian</string>
 </resources>
