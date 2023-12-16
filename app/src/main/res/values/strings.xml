@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Culturama</string>
+
+    <string name="categories_screen">Layar Kategori</string>
+    <string name="tourist_destination">Destinasi Wisata</string>
+    <string name="local_culinary">Kuliner Lokal</string>
+    <string name="traditional_building">Bangunan Tradisional</string>
+    <string name="destinations">%d Destinasi</string>
 </resources>
