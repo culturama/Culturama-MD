@@ -37,7 +37,6 @@ fun CategoriesScreen() {
         Category(R.drawable.ic_local_culinary, R.string.local_culinary, 261),
         Category(R.drawable.ic_traditional_building, R.string.traditional_building, 359)
     )
-
     // Membuat scaffold dengan app bar dan konten
     // Membuat scaffold dengan app bar dan konten
     Scaffold(
