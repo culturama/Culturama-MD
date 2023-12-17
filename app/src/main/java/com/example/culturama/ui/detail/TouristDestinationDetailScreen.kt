@@ -50,7 +50,6 @@ fun TouristDestinationDetailScreen() {
 
     // Menggunakan state untuk menyimpan query pencarian
     val query = remember { mutableStateOf("") }
-
     // Membuat text field untuk memasukkan query pencarian
     OutlinedTextField(
         value = query.value,
