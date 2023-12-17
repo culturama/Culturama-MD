@@ -1,4 +1,4 @@
-package com.example.culturama.detail
+package com.example.culturama.ui.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

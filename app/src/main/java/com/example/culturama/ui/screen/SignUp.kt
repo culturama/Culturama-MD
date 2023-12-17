@@ -1,4 +1,4 @@
-package com.example.culturama.screen
+package com.example.culturama.ui.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
@@ -38,14 +37,14 @@ import com.example.culturama.ui.theme.CulturamaTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginPage(navController: NavHostController) {
+fun SignUp(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
         ClickableText(
-            text = AnnotatedString("Sign up here"),
+            text = AnnotatedString("Already have an account? Log in"),
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(20.dp),
-            onClick = { },
+            onClick = { /* Handle navigation to login screen */ },
             style = TextStyle(
                 fontSize = 14.sp,
                 textDecoration = TextDecoration.Underline,
@@ -59,19 +58,16 @@ fun LoginPage(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        val username = remember { mutableStateOf(TextFieldValue()) }
+        val email = remember { mutableStateOf(TextFieldValue()) }
         val password = remember { mutableStateOf(TextFieldValue()) }
 
-        Text(
-            text = "Culturama", // Replace with your actual app name or any desired text
-            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
-        )
+        Text(text = "Sign Up", style = TextStyle(fontSize = 40.sp))
 
         Spacer(modifier = Modifier.height(20.dp))
         TextField(
-            label = { Text(text = "Username") },
-            value = username.value,
-            onValueChange = { username.value = it })
+            label = { Text(text = "Email") },
+            value = email.value,
+            onValueChange = { email.value = it })
 
         Spacer(modifier = Modifier.height(20.dp))
         TextField(
@@ -84,20 +80,20 @@ fun LoginPage(navController: NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
         Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
             Button(
-                onClick = { },
+                onClick = { /* Handle sign-up logic */ },
                 shape = RoundedCornerShape(50.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)
             ) {
-                Text(text = "Login")
+                Text(text = "Sign Up")
             }
         }
 
         Spacer(modifier = Modifier.height(20.dp))
         ClickableText(
-            text = AnnotatedString("Forgot password?"),
-            onClick = { },
+            text = AnnotatedString("Already have an account? Log in"),
+            onClick = { /* Handle navigation to login screen */ },
             style = TextStyle(
                 fontSize = 14.sp,
                 color = Color.Gray // Sesuaikan warna sesuai keinginan
@@ -108,11 +104,11 @@ fun LoginPage(navController: NavHostController) {
 
 @Preview(showBackground = true)
 @Composable
-fun LoginPagePreview() {
+fun SignUpPagePreview() {
     CulturamaTheme {
         Surface {
             // Preview komposisi di sini
-            // Contoh: LoginPage(navController = rememberNavController())
+            // Contoh: SignUpPage(navController = rememberNavController())
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.culturama.screen
+package com.example.culturama.ui.screen
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
