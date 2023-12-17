@@ -89,7 +89,6 @@ fun SignUp(navController: NavHostController) {
                 Text(text = "Sign Up")
             }
         }
-
         Spacer(modifier = Modifier.height(20.dp))
         ClickableText(
             text = AnnotatedString("Already have an account? Log in"),
