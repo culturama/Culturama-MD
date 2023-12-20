@@ -1,4 +1,4 @@
-package com.example.culturama.ui.fav
+package com.example.culturama.ui.screen.fav
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -26,7 +26,11 @@ data class FavouriteData(
     val rating: Float,
     val image: Int
 )
-
+@Composable
+fun ProvideFavViewModelInScreen(content: @Composable (FavViewModel) -> Unit) {
+    val viewModel: FavViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    content(viewModel)
+}
 @ExperimentalMaterial3Api
 @Composable
 fun FavouriteScreen() {
