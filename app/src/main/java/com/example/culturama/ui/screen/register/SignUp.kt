@@ -1,4 +1,4 @@
-package com.example.culturama.ui.screen
+package com.example.culturama.ui.screen.register
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

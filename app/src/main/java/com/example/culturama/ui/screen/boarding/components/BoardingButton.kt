@@ -1,4 +1,4 @@
-package com.example.culturama.ui.screen.boarding
+package com.example.culturama.ui.screen.boarding.components
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button

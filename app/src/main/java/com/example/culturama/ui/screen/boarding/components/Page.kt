@@ -1,4 +1,4 @@
-package com.example.culturama.ui.screen.boarding
+package com.example.culturama.ui.screen.boarding.components
 
 import androidx.annotation.DrawableRes
 import com.example.culturama.R

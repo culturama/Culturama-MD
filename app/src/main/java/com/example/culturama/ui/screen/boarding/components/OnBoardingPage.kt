@@ -1,6 +1,5 @@
-package com.example.culturama.ui.screen.boarding
+package com.example.culturama.ui.screen.boarding.components
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
