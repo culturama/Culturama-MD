@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class FavViewModel : ViewModel() {
-
     private val _favoriteLocations = MutableLiveData<List<FavouriteData>>()
     val favoriteLocations: LiveData<List<FavouriteData>> get() = _favoriteLocations
     init {
