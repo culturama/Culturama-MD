@@ -1,4 +1,4 @@
-package com.example.culturama.ui.screen
+package com.example.culturama.ui.fav
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -7,13 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.material3.Typography
 import androidx.compose.ui.draw.clip
 import com.example.culturama.R
 
@@ -34,7 +27,7 @@ data class FavouriteData(
     val image: Int
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
+@ExperimentalMaterial3Api
 @Composable
 fun FavouriteScreen() {
     MaterialTheme {
@@ -42,39 +35,26 @@ fun FavouriteScreen() {
         val selectedItem = remember { mutableStateOf(-1) }
         val favoriteLocations = remember { mutableStateOf(mutableListOf<FavouriteData>()) }
 
-        // Daftar data dummy untuk item favorit
         val favouriteList = listOf(
             FavouriteData("Monumen Nasional", "Tourist Destination", 4.6f, R.drawable.monas),
-            // Tambahkan lokasi favorit lainnya jika diperlukan
         )
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            // Panggil fungsi SearchBar dan berikan teks pencarian sebagai parameter
             SearchBar(searchText.value) {
-                // Perbarui nilai teks pencarian saat berubah
                 searchText.value = it
             }
-
-            // Gunakan LazyColumn untuk menampilkan daftar item favorit secara efisien dan dinamis
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // Ulangi daftar data favorit dan berikan indeks dan data sebagai parameter
-                items(favouriteList.indices) { index ->
+                items(favouriteList.size) { index ->
                     val data = favouriteList[index]
-                    // Panggil fungsi FavouriteItem dan berikan indeks, data, dan item yang dipilih sebagai parameter
-                    FavouriteItem(index, data, selectedItem.value) {
-                        // Perbarui nilai item yang dipilih saat diklik
-                        selectedItem.value = it
-                    } { favoriteData ->
-                        // Tambahkan atau hapus dari daftar favorit
+                    FavouriteItem(index, data, selectedItem.value, onSelect = { selectedItem.value = it }) { favoriteData ->
                         if (favoriteLocations.value.contains(favoriteData)) {
                             favoriteLocations.value.remove(favoriteData)
                         } else {
@@ -86,10 +66,10 @@ fun FavouriteScreen() {
         }
     }
 }
-// Buat fungsi komposabel untuk bilah pencarian
+
+@ExperimentalMaterial3Api
 @Composable
 fun SearchBar(text: String, onTextChange: (String) -> Unit) {
-    // Gunakan Surface untuk membuat bilah pencarian dengan bentuk bulat
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -97,20 +77,17 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
         shape = RoundedCornerShape(28.dp),
         color = MaterialTheme.colorScheme.surface
     ) {
-        // Gunakan Row untuk menata elemen UI secara horizontal
         Row(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Tampilkan ikon pencarian
             Icon(
                 painter = painterResource(id = R.drawable.ic_search),
                 contentDescription = "Search icon",
                 tint = MaterialTheme.colorScheme.onSurface
             )
-            // Tampilkan teks pencarian dengan TextField
             TextField(
                 value = text,
                 onValueChange = onTextChange,
@@ -119,9 +96,8 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
                     .padding(start = 8.dp),
                 singleLine = true,
                 maxLines = 1,
-                textStyle = MaterialTheme.typography,
+                textStyle = MaterialTheme.typography.bodyLarge,
                 colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = Color.Transparent,
                     cursorColor = MaterialTheme.colorScheme.onSurface,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
@@ -129,8 +105,9 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
                 placeholder = {
                     Text(
                         text = "Search...",
-                        style = MaterialTheme.typography,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                        )
                     )
                 }
             )
@@ -138,7 +115,6 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
     }
 }
 
-// Buat fungsi komposabel untuk item favorit
 @Composable
 fun FavouriteItem(
     index: Int,
@@ -205,8 +181,9 @@ fun FavouriteItem(
                 // Gunakan Row untuk menata elemen UI secara horizontal
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                        .fillMaxSize()
+                        .padding(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     // Tampilkan peringkat bintang item favorit dengan ikon bintang
                     Row(
@@ -233,21 +210,25 @@ fun FavouriteItem(
                     )
                 }
             }
-
-            // Tampilkan ikon hati item favorit dengan warna ungu jika dipilih
-            Icon(
-                painter = painterResource(id = R.drawable.ic_heart),
-                contentDescription = "Heart icon",
-                tint = if (index == selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(
-                    alpha = 0.5f
-                ),
+            Box(
                 modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .clickable {
-                        // Tambahkan atau hapus dari favorit saat ikon hati diklik
-                        onAddToFavorites(data)
-                    }
-            )
+                    .fillMaxSize()
+                    .weight(1f),
+                contentAlignment = Alignment.TopEnd
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_heart),
+                    contentDescription = "Heart icon",
+                    tint = if (index == selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(
+                        alpha = 0.5f
+                    ),
+                    modifier = Modifier
+                        .clickable {
+                            // Tambahkan atau hapus dari favorit saat ikon hati diklik
+                            onAddToFavorites(data)
+                        }
+                )
+            }
         }
     }
 }
