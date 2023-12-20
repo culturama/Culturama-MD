@@ -23,6 +23,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.material3.Typography
+import androidx.compose.ui.draw.clip
 import com.example.culturama.R
 
 data class FavouriteData(
@@ -84,7 +86,6 @@ fun FavouriteScreen() {
         }
     }
 }
-
 // Buat fungsi komposabel untuk bilah pencarian
 @Composable
 fun SearchBar(text: String, onTextChange: (String) -> Unit) {
@@ -94,7 +95,7 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
             .fillMaxWidth()
             .height(56.dp),
         shape = RoundedCornerShape(28.dp),
-        color = MaterialTheme.colors.surface
+        color = MaterialTheme.colorScheme.surface
     ) {
         // Gunakan Row untuk menata elemen UI secara horizontal
         Row(
@@ -107,7 +108,7 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_search),
                 contentDescription = "Search icon",
-                tint = MaterialTheme.colors.onSurface
+                tint = MaterialTheme.colorScheme.onSurface
             )
             // Tampilkan teks pencarian dengan TextField
             TextField(
@@ -121,7 +122,7 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
                 textStyle = MaterialTheme.typography,
                 colors = TextFieldDefaults.textFieldColors(
                     backgroundColor = Color.Transparent,
-                    cursorColor = MaterialTheme.colors.onSurface,
+                    cursorColor = MaterialTheme.colorScheme.onSurface,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 ),
@@ -129,7 +130,7 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
                     Text(
                         text = "Search...",
                         style = MaterialTheme.typography,
-                        color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
                     )
                 }
             )
@@ -153,7 +154,7 @@ fun FavouriteItem(
             .height(120.dp)
             .border(
                 width = if (index == selected) 4.dp else 0.dp,
-                color = MaterialTheme.colors.primary,
+                color = MaterialTheme.colorScheme.primary,
                 shape = RoundedCornerShape(8.dp)
             )
             .clickable {
@@ -161,7 +162,7 @@ fun FavouriteItem(
                 onSelect(index)
             },
         shape = RoundedCornerShape(8.dp),
-        color = MaterialTheme.colors.surface
+        color = MaterialTheme.colorScheme.surface
     ) {
         // Gunakan Row untuk menata elemen UI secara horizontal
         Row(
@@ -189,16 +190,16 @@ fun FavouriteItem(
                 // Tampilkan nama item favorit dengan teks ungu jika dipilih
                 Text(
                     text = data.name,
-                    style = MaterialTheme.typography.h6.copy(
-                        color = if (index == selected) MaterialTheme.colors.primary else MaterialTheme.colors.onSurface,
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        color = if (index == selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
                         fontWeight = FontWeight.Bold
                     )
                 )
                 // Tampilkan kategori item favorit dengan teks abu-abu
                 Text(
                     text = data.category,
-                    style = MaterialTheme.typography.body2.copy(
-                        color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
                     )
                 )
                 // Gunakan Row untuk menata elemen UI secara horizontal
@@ -218,16 +219,16 @@ fun FavouriteItem(
                         )
                         Text(
                             text = data.rating.toString(),
-                            style = MaterialTheme.typography.body2.copy(
-                                color = MaterialTheme.colors.onSurface
+                            style = MaterialTheme.typography.bodyLarge.copy(
+                                color = MaterialTheme.colorScheme.onSurface
                             )
                         )
                     }
                     // Tampilkan label item favorit dengan teks ungu jika dipilih
                     Text(
                         text = if (index == selected) "item medium" else "",
-                        style = MaterialTheme.typography.body2.copy(
-                            color = MaterialTheme.colors.primary
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            color = MaterialTheme.colorScheme.primary
                         )
                     )
                 }
@@ -237,7 +238,7 @@ fun FavouriteItem(
             Icon(
                 painter = painterResource(id = R.drawable.ic_heart),
                 contentDescription = "Heart icon",
-                tint = if (index == selected) MaterialTheme.colors.primary else MaterialTheme.colors.onSurface.copy(
+                tint = if (index == selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(
                     alpha = 0.5f
                 ),
                 modifier = Modifier
