@@ -22,6 +22,11 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.example.culturama.ui.screen.boarding.components.BoardingButton
+import com.example.culturama.ui.screen.boarding.components.BoardingTextButton
+import com.example.culturama.ui.screen.boarding.components.OnBoardingPage
+import com.example.culturama.ui.screen.boarding.components.PageIndicator
+import com.example.culturama.ui.screen.boarding.components.pages
 import com.example.culturama.ui.theme.CulturamaTheme
 import kotlinx.coroutines.launch
 
