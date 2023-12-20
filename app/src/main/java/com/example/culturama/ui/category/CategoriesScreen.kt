@@ -39,7 +39,6 @@ fun CategoriesScreen() {
         Category("Tokoh Sejarah", painterResource(R.drawable.ic_historical_figure), 359),
         Category("Cerita", painterResource(R.drawable.ic_story), 359)
     )
-
     Column(modifier = Modifier.fillMaxSize()) {
         Text(
             text = "Kategori",
