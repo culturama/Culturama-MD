@@ -9,6 +9,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.example.culturama.ui.screen.boarding.OnBoardingScreen
 import com.example.culturama.ui.screen.boarding.OnBoardingViewModel
+import com.example.culturama.ui.screen.home.HomeScreen
 
 @Composable
 fun NavGraph (
@@ -41,9 +42,7 @@ fun NavGraph (
             composable(
                 route = Route.CultureNavigatorScreen.route
             ) {
-                Text(
-                    text = "News Navigator Screen"
-                )
+                HomeScreen()
             }
         }
     }
