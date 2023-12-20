@@ -1,13 +1,28 @@
 <resources>
     <string name="app_name">Culturama</string>
 
+    <string name="home">Home</string>
+    <string name="favourite">Favourite</string>
+    <string name="profile">Profile</string>
+
     <string name="categories_screen">Layar Kategori</string>
-    <string name="tourist_destination">Destinasi Wisata</string>
-    <string name="local_culinary">Kuliner Lokal</string>
-    <string name="traditional_building">Bangunan Tradisional</string>
+
+    <string name="category_all">All</string>
+    <string name="tourist_destination">Wisata</string>
+    <string name="local_tradition">Tradisi</string>
+    <string name="traditional_art">Seni</string>
+    <string name="myth">Mitos</string>
+    <string name="local_story">Cerita</string>
+    <string name="history">Sejarah</string>
+    <string name="historycal_figure">Pahlawan</string>
+    <string name="local_culinary">Kuliner</string>
+    <string name="traditional_building">Bangunan</string>
     <string name="destinations">%d Destinasi</string>
 
+    <string name="search_culture">Cari Budaya</string>
     <string name="search_area">Cari Daerah</string>
     <string name="search">Cari</string>
     <string name="search_results">%d Hasil Pencarian</string>
+
+
 </resources>
