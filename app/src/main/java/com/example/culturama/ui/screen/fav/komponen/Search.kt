@@ -1,4 +1,4 @@
-package com.example.culturama.ui.fav.komponen
+package com.example.culturama.ui.screen.fav.komponen
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
