@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.culturama.ui.theme.CulturamaTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -103,11 +104,10 @@ fun SignUp(navController: NavHostController) {
 
 @Preview(showBackground = true)
 @Composable
-fun SignUpPagePreview() {
+fun SignUpPreview() {
     CulturamaTheme {
         Surface {
-            // Preview komposisi di sini
-            // Contoh: SignUpPage(navController = rememberNavController())
+            SignUp(navController = rememberNavController())
         }
     }
 }
