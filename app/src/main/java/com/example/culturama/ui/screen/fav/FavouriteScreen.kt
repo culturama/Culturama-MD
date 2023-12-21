@@ -18,7 +18,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.culturama.R
+import com.example.culturama.ui.theme.CulturamaTheme
 
 data class FavouriteData(
     val name: String,
@@ -234,5 +236,13 @@ fun FavouriteItem(
                 )
             }
         }
+    }
+}
+@Preview
+@ExperimentalMaterial3Api
+@Composable
+fun FavouriteScreenPreview() {
+    CulturamaTheme {
+        FavouriteScreen()
     }
 }
