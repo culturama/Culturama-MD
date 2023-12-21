@@ -30,6 +30,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.culturama.R
+import com.example.culturama.ui.screen.detail.HistoricalFigure
+import com.example.culturama.ui.screen.detail.History
+import com.example.culturama.ui.screen.detail.LocalCulinary
+import com.example.culturama.ui.screen.detail.LocalTradition
+import com.example.culturama.ui.screen.detail.Mythology
+import com.example.culturama.ui.screen.detail.Story
+import com.example.culturama.ui.screen.detail.TouristDestination
+import com.example.culturama.ui.screen.detail.TraditionalArt
+import com.example.culturama.ui.screen.detail.TraditionalBuilding
 
 data class Category(val name: String, val icon: Painter, val destinationCount: Int)
 
@@ -56,13 +65,16 @@ fun CategoriesScreen(navController: NavHostController) {
         )
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(categories.size) { index ->
-                val category = categories[index] // Perubahan di sini
+                val category = categories[index]
 
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
-                        .clickable { /* Navigasi ke layar detail kategori */ }
+                        .clickable {
+                            // Navigasi ke layar detail kategori
+                            navController.navigate("detail/${category.name}")
+                        }
                 ) {
                     Icon(
                         painter = category.icon,
@@ -89,6 +101,53 @@ fun CategoriesScreen(navController: NavHostController) {
                     )
                 }
                 Divider()
+            }
+        }
+    }
+}
+
+@ExperimentalMaterial3Api
+@Composable
+fun CategoryNavHost() {
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "categories") {
+        composable("categories") {
+            CategoriesScreen(navController)
+        }
+        composable("detail/{categoryName}") { backStackEntry ->
+            val categoryName = backStackEntry.arguments?.getString("categoryName")
+            when (categoryName) {
+                "Tujuan Wisata" -> {
+                    navController.navigate("TouristDestination")
+                }
+                "Kuliner Lokal" -> {
+                    navController.navigate("LocalCulinary")
+                }
+                "Bangunan Tradisional" -> {
+                    navController.navigate("TraditionalBuilding")
+                }
+                "Tradisi Lokal" -> {
+                    navController.navigate("LocalTradition")
+                }
+                "Seni Tradisional" -> {
+                    navController.navigate("TraditionalArt")
+                }
+                "Mitologi" -> {
+                    navController.navigate("Mythology")
+                }
+                "Sejarah" -> {
+                    navController.navigate("History")
+                }
+                "Tokoh Sejarah" -> {
+                    navController.navigate("HistoricalFigure")
+                }
+                "Cerita" -> {
+                    navController.navigate("Story")
+                }
+                else -> {
+                    // Handle kategori lainnya jika diperlukan
+                }
             }
         }
     }
