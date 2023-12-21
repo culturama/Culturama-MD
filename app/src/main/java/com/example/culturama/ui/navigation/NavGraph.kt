@@ -12,6 +12,7 @@ import com.example.culturama.ui.screen.boarding.OnBoardingViewModel
 import com.example.culturama.ui.screen.home.HomeScreen
 import com.example.culturama.ui.screen.navigator.CultureNavigator
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavGraph (
     startDestination: String
