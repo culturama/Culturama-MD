@@ -34,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.culturama.ui.theme.CulturamaTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -110,8 +111,7 @@ fun LoginPage(navController: NavHostController) {
 fun LoginPagePreview() {
     CulturamaTheme {
         Surface {
-            // Preview komposisi di sini
-            // Contoh: LoginPage(navController = rememberNavController())
+         LoginPage(navController = rememberNavController())
         }
     }
 }

@@ -31,15 +31,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.culturama.R
-import com.example.culturama.ui.screen.detail.HistoricalFigure
-import com.example.culturama.ui.screen.detail.History
-import com.example.culturama.ui.screen.detail.LocalCulinary
-import com.example.culturama.ui.screen.detail.LocalTradition
-import com.example.culturama.ui.screen.detail.Mythology
-import com.example.culturama.ui.screen.detail.Story
-import com.example.culturama.ui.screen.detail.TouristDestination
-import com.example.culturama.ui.screen.detail.TraditionalArt
-import com.example.culturama.ui.screen.detail.TraditionalBuilding
 import com.example.culturama.ui.theme.CulturamaTheme
 
 data class Category(val name: String, val icon: Painter, val destinationCount: Int)
