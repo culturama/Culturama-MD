@@ -1,6 +1,6 @@
 package com.example.culturama.ui.navigation
 
-import androidx.compose.material3.Text
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.culturama.ui.screen.boarding.OnBoardingScreen
 import com.example.culturama.ui.screen.boarding.OnBoardingViewModel
 import com.example.culturama.ui.screen.home.HomeScreen
+import com.example.culturama.ui.screen.navigator.CultureNavigator
 
 @Composable
 fun NavGraph (
@@ -17,33 +18,33 @@ fun NavGraph (
 ) {
     val navController = rememberNavController()
 
-    NavHost(
-        navController = navController,
-        startDestination = startDestination
-    ) {
-        navigation(
-            route = Route.AppStartNavigation.route,
-            startDestination = Route.OnBoardingScreen.route
+        NavHost(
+            navController = navController,
+            startDestination = startDestination,
         ) {
-            composable(
-                route = Route.OnBoardingScreen.route
+            navigation(
+                route = Route.AppStartNavigation.route,
+                startDestination = Route.OnBoardingScreen.route
             ) {
-                val viewModel: OnBoardingViewModel = hiltViewModel()
-                OnBoardingScreen(
-                    event = viewModel::onEvent
-                )
+                composable(
+                    route = Route.OnBoardingScreen.route
+                ) {
+                    val viewModel: OnBoardingViewModel = hiltViewModel()
+                    OnBoardingScreen(
+                        event = viewModel::onEvent
+                    )
+                }
             }
-        }
 
-        navigation(
-            route = Route.CultureNavigation.route,
-            startDestination = Route.CultureNavigatorScreen.route
-        ) {
-            composable(
-                route = Route.CultureNavigatorScreen.route
+            navigation(
+                route = Route.CultureNavigation.route,
+                startDestination = Route.CultureNavigatorScreen.route
             ) {
-                HomeScreen()
+                composable(
+                    route = Route.CultureNavigatorScreen.route
+                ) {
+                    CultureNavigator()
+                }
             }
         }
     }
-}

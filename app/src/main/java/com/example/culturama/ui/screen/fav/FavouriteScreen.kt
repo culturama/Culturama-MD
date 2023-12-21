@@ -49,9 +49,9 @@ fun FavouriteScreen() {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            SearchBar(searchText.value) {
-                searchText.value = it
-            }
+//            SearchBar(searchText.value) {
+//                searchText.value = it
+//            }
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
