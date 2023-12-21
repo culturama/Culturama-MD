@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.culturama.R
 
 data class Story(
     val title: String,
@@ -20,13 +20,33 @@ data class Story(
     val description: String,
     val content: String
 )
+
+@ExperimentalMaterial3Api
 @Composable
 fun StoryDetail(navController: NavHostController, story: Story) {
     Column(modifier = Modifier.fillMaxSize()) {
-        Text(
-            text = story.title,
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.padding(16.dp)
+        TopAppBar(
+            title = {
+                Text(
+                    text = story.title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(16.dp)
+                )
+            },
+            navigationIcon = {
+                IconButton(
+                    onClick = {
+                        // Navigate back to the category screen
+                        navController.navigateUp()
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_arrow_back),
+                        contentDescription = "Back"
+                    )
+                }
+            },
+            modifier = Modifier.fillMaxWidth(),
         )
         Image(
             painter = painterResource(story.image),

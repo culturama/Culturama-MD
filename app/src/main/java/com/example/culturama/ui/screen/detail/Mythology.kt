@@ -1,32 +1,51 @@
 package com.example.culturama.ui.screen.detail
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.culturama.R
 
 data class Mythology(
     val name: String,
     val image: Int,
     val description: String
 )
+
+@ExperimentalMaterial3Api
 @Composable
 fun Mythology(myth: Mythology, navController: NavHostController) {
     Column(modifier = Modifier.fillMaxSize()) {
-        Text(
-            text = myth.name,
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.padding(16.dp)
+        TopAppBar(
+            title = {
+                Text(
+                    text = myth.name,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(16.dp)
+                )
+            },
+            navigationIcon = {
+                IconButton(
+                    onClick = {
+                        // Navigate back to the category screen
+                        navController.navigateUp()
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_arrow_back),
+                        contentDescription = "Back"
+                    )
+                }
+            },
+            modifier = Modifier.fillMaxWidth(),
         )
         Image(
             painter = painterResource(myth.image),
@@ -42,17 +61,6 @@ fun Mythology(myth: Mythology, navController: NavHostController) {
             text = myth.description,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(16.dp)
-        )
-
-        // Contoh penanganan klik untuk kembali ke layar kategori
-        // Anda dapat menyesuaikan ini sesuai dengan struktur navigasi Anda
-        Text(
-            text = "Kembali",
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(16.dp).clickable {
-                // Navigasi kembali ke layar kategori
-                navController.popBackStack()
-            }
         )
     }
 }
