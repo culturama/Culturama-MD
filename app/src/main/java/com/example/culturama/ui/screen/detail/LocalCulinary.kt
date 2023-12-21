@@ -44,7 +44,15 @@ fun LocalCulinary() {
     val localCulinaryList = remember {
         mutableListOf(
             LocalCulinaryData("rujak cingur", R.drawable.rujak_cingur, "Makanan Lokal rujak cingur", "Kuliber lokal", "Local Culinary"),
-            LocalCulinaryData("tahu tek", R.drawable.tahu_tek, "Makanan Lokal tahu tek", "Asal lokal", "Local Culinary")
+            LocalCulinaryData("tahu tek", R.drawable.tahu_tek, "Makanan Lokal tahu tek", "Asal lokal", "Local Culinary"),
+            LocalCulinaryData("rujak cingur", R.drawable.rujak_cingur, "Makanan Lokal rujak cingur", "Kuliber lokal", "Local Culinary"),
+            LocalCulinaryData("tahu tek", R.drawable.tahu_tek, "Makanan Lokal tahu tek", "Asal lokal", "Local Culinary"),LocalCulinaryData("rujak cingur", R.drawable.rujak_cingur, "Makanan Lokal rujak cingur", "Kuliber lokal", "Local Culinary"),
+            LocalCulinaryData("tahu tek", R.drawable.tahu_tek, "Makanan Lokal tahu tek", "Asal lokal", "Local Culinary"),LocalCulinaryData("rujak cingur", R.drawable.rujak_cingur, "Makanan Lokal rujak cingur", "Kuliber lokal", "Local Culinary"),
+            LocalCulinaryData("tahu tek", R.drawable.tahu_tek, "Makanan Lokal tahu tek", "Asal lokal", "Local Culinary"),LocalCulinaryData("rujak cingur", R.drawable.rujak_cingur, "Makanan Lokal rujak cingur", "Kuliber lokal", "Local Culinary"),
+            LocalCulinaryData("tahu tek", R.drawable.tahu_tek, "Makanan Lokal tahu tek", "Asal lokal", "Local Culinary"),LocalCulinaryData("rujak cingur", R.drawable.rujak_cingur, "Makanan Lokal rujak cingur", "Kuliber lokal", "Local Culinary"),
+            LocalCulinaryData("tahu tek", R.drawable.tahu_tek, "Makanan Lokal tahu tek", "Asal lokal", "Local Culinary"),LocalCulinaryData("rujak cingur", R.drawable.rujak_cingur, "Makanan Lokal rujak cingur", "Kuliber lokal", "Local Culinary"),
+            LocalCulinaryData("tahu tek", R.drawable.tahu_tek, "Makanan Lokal tahu tek", "Asal lokal", "Local Culinary"),LocalCulinaryData("rujak cingur", R.drawable.rujak_cingur, "Makanan Lokal rujak cingur", "Kuliber lokal", "Local Culinary"),
+            LocalCulinaryData("tahu tek", R.drawable.tahu_tek, "Makanan Lokal tahu tek", "Asal lokal", "Local Culinary"),
         )
     }
 

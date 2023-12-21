@@ -40,6 +40,15 @@ fun HistoricalFigure() {
 
         val historicalFigureList = listOf(
             HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
+            HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
+            HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
+            HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
+            HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
+            HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
+            HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
+            HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
+            HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
+            HistoricalData("Gajah Mada", R.drawable.gajah_mada, "tokoh sejarah", "Tokoh Sejarah", "History FIgure"),
         )
         Column(
             modifier = Modifier

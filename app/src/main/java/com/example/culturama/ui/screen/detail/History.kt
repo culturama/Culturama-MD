@@ -48,6 +48,19 @@ fun History() {
 
         val historyList = listOf(
             HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
+            HistoryData("Cerita Surabaya", R.drawable.surabaya, "Sejarah Surabaya", "Sejarah", "History"),
         )
         Column(
             modifier = Modifier
