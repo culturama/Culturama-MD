@@ -123,7 +123,6 @@ fun SurveiScreen() {
         }
     )
 }
-
 @Composable
 fun SurveiItem(
     question: String,
