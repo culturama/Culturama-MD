@@ -1,7 +1,9 @@
 package com.example.culturama.ui.screen.category
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -60,7 +62,7 @@ fun CategoriesScreen(navController: NavHostController) {
             items(categories.size) { index ->
                 val category = categories[index]
 
-                Row(
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
@@ -68,79 +70,47 @@ fun CategoriesScreen(navController: NavHostController) {
                             // Navigasi ke layar detail kategori
                             navController.navigate("detail/${category.name}")
                         }
+                        .background(MaterialTheme.colorScheme.surface)
+                        .clip(MaterialTheme.shapes.medium)
                 ) {
-                    Icon(
-                        painter = category.icon,
-                        contentDescription = null,
-                        modifier = Modifier.size(48.dp).padding(end = 16.dp)
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Column {
-                        Text(
-                            text = category.name,
-                            style = MaterialTheme.typography.bodyLarge
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    ) {
+                        Icon(
+                            painter = category.icon,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(48.dp)
+                                .padding(end = 16.dp)
                         )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            text = "${category.destinationCount} Destinasi",
-                            style = MaterialTheme.typography.bodyLarge
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column(
+                            modifier = Modifier
+                                .weight(1f)
+                                .align(Alignment.CenterVertically) // Pusatkan vertikal di dalam Column
+                        ) {
+                            Text(
+                                text = category.name,
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = "${category.destinationCount} Destinasi",
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                        }
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_arrow_forward),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(24.dp)
+                                .align(Alignment.CenterVertically) // Pusatkan vertikal di dalam Icon
                         )
                     }
-                    Spacer(modifier = Modifier.weight(1f))
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_arrow_forward),
-                        contentDescription = null,
-                        modifier = Modifier.size(24.dp)
-                    )
                 }
                 Divider()
-            }
-        }
-    }
-}
-
-@ExperimentalMaterial3Api
-@Composable
-fun CategoryNavHost() {
-    val navController = rememberNavController()
-
-    NavHost(navController = navController, startDestination = "categories") {
-        composable("categories") {
-            CategoriesScreen(navController)
-        }
-        composable("detail/{categoryName}") { backStackEntry ->
-            val categoryName = backStackEntry.arguments?.getString("categoryName")
-            when (categoryName) {
-                "Tujuan Wisata" -> {
-                    navController.navigate("TouristDestination")
-                }
-                "Kuliner Lokal" -> {
-                    navController.navigate("LocalCulinary")
-                }
-                "Bangunan Tradisional" -> {
-                    navController.navigate("TraditionalBuilding")
-                }
-                "Tradisi Lokal" -> {
-                    navController.navigate("LocalTradition")
-                }
-                "Seni Tradisional" -> {
-                    navController.navigate("TraditionalArt")
-                }
-                "Mitologi" -> {
-                    navController.navigate("Mythology")
-                }
-                "Sejarah" -> {
-                    navController.navigate("History")
-                }
-                "Tokoh Sejarah" -> {
-                    navController.navigate("HistoricalFigure")
-                }
-                "Cerita" -> {
-                    navController.navigate("Story")
-                }
-                else -> {
-                    // Handle kategori lainnya jika diperlukan
-                }
             }
         }
     }

@@ -6,8 +6,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,8 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.culturama.ui.theme.CulturamaTheme
 
 @Composable
-fun ResetPasswordScreen(navController: NavHostController) {
-    var email by remember { mutableStateOf(TextFieldValue()) }
+fun ConfirmResetPasswordScreen(navController: NavHostController, email: String) {
+    var confirmationCode by remember { mutableStateOf(TextFieldValue()) }
 
     Box(
         modifier = Modifier
@@ -34,40 +32,45 @@ fun ResetPasswordScreen(navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Reset Password",
-                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
+                text = "Konfirmasi Reset Password",
+                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.SemiBold)
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                text = "Langkah terakhir! Untuk mengamankan akun Anda, masukkan kode yang baru saja kami kirimkan ke $email",
+                style = MaterialTheme.typography.labelMedium,
+                modifier = Modifier.padding(horizontal = 16.dp)
             )
             Spacer(modifier = Modifier.height(20.dp))
             TextField(
                 modifier = Modifier.fillMaxWidth(),
-                label = { Text(text = "Email") },
-                value = email,
-                onValueChange = { email = it }
+                label = { Text(text = "Kode Konfirmasi") },
+                value = confirmationCode,
+                onValueChange = { confirmationCode = it }
             )
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 onClick = {
-                    // Implementasi logika reset password di sini
-                    // Kirim permintaan reset password ke email pengguna
-                    // Tambahkan logika untuk menangani respons atau error dari server/email provider
-                    // Anda dapat menggunakan library untuk mengirim email atau API reset password
+                    // Implementasi logika konfirmasi reset password di sini
+                    // Validasi kode konfirmasi, dan lakukan tindakan sesuai
+                    // Misalnya, tampilkan pesan sukses atau arahkan pengguna ke halaman login
                 },
                 shape = RoundedCornerShape(50.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)
             ) {
-                Text(text = "Reset Password")
+                Text(text = "Konfirmasi")
             }
         }
     }
 }
 @Preview(showBackground = true)
 @Composable
-fun ResetPasswordScreenPreview() {
+fun ConfirmResetPasswordScreenPreview() {
     CulturamaTheme {
         Surface {
-            ResetPasswordScreen(navController = rememberNavController())
+            ConfirmResetPasswordScreen(navController = rememberNavController(), email = "user@example.com")
         }
     }
 }
