@@ -39,66 +39,69 @@ import com.example.culturama.ui.theme.CulturamaTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUp(navController: NavHostController) {
-    Box(modifier = Modifier.fillMaxSize()) {
-        ClickableText(
-            text = AnnotatedString("Already have an account? Log in"),
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(20.dp),
-            onClick = { /* Handle navigation to login screen */ },
-            style = TextStyle(
-                fontSize = 14.sp,
-                textDecoration = TextDecoration.Underline,
-                color = Color.Gray // Sesuaikan warna sesuai keinginan
-            )
-        )
-    }
-    Column(
-        modifier = Modifier.padding(20.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
     ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-        val email = remember { mutableStateOf(TextFieldValue()) }
-        val password = remember { mutableStateOf(TextFieldValue()) }
+            val email = remember { mutableStateOf(TextFieldValue()) }
+            val password = remember { mutableStateOf(TextFieldValue()) }
 
-        Text(text = "Sign Up", style = TextStyle(fontSize = 40.sp))
-
-        Spacer(modifier = Modifier.height(20.dp))
-        TextField(
-            label = { Text(text = "Email") },
-            value = email.value,
-            onValueChange = { email.value = it })
-
-        Spacer(modifier = Modifier.height(20.dp))
-        TextField(
-            label = { Text(text = "Password") },
-            value = password.value,
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            onValueChange = { password.value = it })
-
-        Spacer(modifier = Modifier.height(20.dp))
-        Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
-            Button(
-                onClick = { /* Handle sign-up logic */ },
-                shape = RoundedCornerShape(50.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-            ) {
-                Text(text = "Sign Up")
-            }
-        }
-        Spacer(modifier = Modifier.height(20.dp))
-        ClickableText(
-            text = AnnotatedString("Already have an account? Log in"),
-            onClick = { /* Handle navigation to login screen */ },
-            style = TextStyle(
-                fontSize = 14.sp,
-                color = Color.Gray // Sesuaikan warna sesuai keinginan
+            Text(
+                text = "Sign Up",
+                style = TextStyle(fontSize = 40.sp)
             )
-        )
+
+            Spacer(modifier = Modifier.height(20.dp))
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                label = { Text(text = "Email") },
+                value = email.value,
+                onValueChange = { email.value = it })
+
+            Spacer(modifier = Modifier.height(20.dp))
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                label = { Text(text = "Password") },
+                value = password.value,
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                onValueChange = { password.value = it })
+
+            Spacer(modifier = Modifier.height(20.dp))
+            Box(
+                modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)
+            ) {
+                Button(
+                    onClick = { /* Handle sign-up logic */ },
+                    shape = RoundedCornerShape(50.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                ) {
+                    Text(text = "Sign Up")
+                }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+            ClickableText(
+                text = AnnotatedString("Already have an account? Log in"),
+                onClick = { /* Handle navigation to login screen */ },
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    color = Color.Gray
+                )
+            )
+        }
     }
 }
 
