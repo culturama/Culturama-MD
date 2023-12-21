@@ -1,6 +1,7 @@
 package com.example.culturama.ui.screen.detail
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,7 +21,7 @@ data class Mythology(
     val description: String
 )
 @Composable
-fun Mythology(navController: NavHostController, myth: Mythology) {
+fun Mythology(myth: Mythology, navController: NavHostController) {
     Column(modifier = Modifier.fillMaxSize()) {
         Text(
             text = myth.name,
@@ -41,6 +42,17 @@ fun Mythology(navController: NavHostController, myth: Mythology) {
             text = myth.description,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(16.dp)
+        )
+
+        // Contoh penanganan klik untuk kembali ke layar kategori
+        // Anda dapat menyesuaikan ini sesuai dengan struktur navigasi Anda
+        Text(
+            text = "Kembali",
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.padding(16.dp).clickable {
+                // Navigasi kembali ke layar kategori
+                navController.popBackStack()
+            }
         )
     }
 }
