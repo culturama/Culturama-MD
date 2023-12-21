@@ -40,50 +40,45 @@ import com.example.culturama.ui.theme.CulturamaTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginPage(navController: NavHostController) {
-    Box(modifier = Modifier.fillMaxSize()) {
-        ClickableText(
-            text = AnnotatedString("Sign up here"),
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(20.dp),
-            onClick = { },
-            style = TextStyle(
-                fontSize = 14.sp,
-                textDecoration = TextDecoration.Underline,
-                color = Color.Gray // Sesuaikan warna sesuai keinginan
-            )
-        )
-    }
-    Column(
-        modifier = Modifier.padding(20.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
     ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-        val username = remember { mutableStateOf(TextFieldValue()) }
-        val password = remember { mutableStateOf(TextFieldValue()) }
+            val username = remember { mutableStateOf(TextFieldValue()) }
+            val password = remember { mutableStateOf(TextFieldValue()) }
 
-        Text(
-            text = "Culturama", // Replace with your actual app name or any desired text
-            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
-        )
+            Text(
+                text = "Culturama", // Replace with your actual app name or any desired text
+                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
+            )
 
-        Spacer(modifier = Modifier.height(20.dp))
-        TextField(
-            label = { Text(text = "Username") },
-            value = username.value,
-            onValueChange = { username.value = it })
+            Spacer(modifier = Modifier.height(20.dp))
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                label = { Text(text = "Username") },
+                value = username.value,
+                onValueChange = { username.value = it })
 
-        Spacer(modifier = Modifier.height(20.dp))
-        TextField(
-            label = { Text(text = "Password") },
-            value = password.value,
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            onValueChange = { password.value = it })
+            Spacer(modifier = Modifier.height(20.dp))
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                label = { Text(text = "Password") },
+                value = password.value,
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                onValueChange = { password.value = it })
 
-        Spacer(modifier = Modifier.height(20.dp))
-        Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
+            Spacer(modifier = Modifier.height(20.dp))
             Button(
                 onClick = { },
                 shape = RoundedCornerShape(50.dp),
@@ -93,25 +88,39 @@ fun LoginPage(navController: NavHostController) {
             ) {
                 Text(text = "Login")
             }
+
+            Spacer(modifier = Modifier.height(20.dp))
+            ClickableText(
+                text = AnnotatedString("Forgot password?"),
+                onClick = { },
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    color = Color.Gray
+                )
+            )
         }
-        Spacer(modifier = Modifier.height(20.dp))
         ClickableText(
-            text = AnnotatedString("Forgot password?"),
+            text = AnnotatedString("Sign up here"),
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(20.dp),
             onClick = { },
             style = TextStyle(
                 fontSize = 14.sp,
-                color = Color.Gray // Sesuaikan warna sesuai keinginan
+                textDecoration = TextDecoration.Underline,
+                color = Color.Gray
             )
         )
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
 fun LoginPagePreview() {
     CulturamaTheme {
         Surface {
-         LoginPage(navController = rememberNavController())
+            LoginPage(navController = rememberNavController())
         }
     }
 }
