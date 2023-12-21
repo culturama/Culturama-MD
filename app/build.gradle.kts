@@ -63,6 +63,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics:1.5.4")
     implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
 
+    implementation(platform("androidx.compose:compose-bom:1.1.0-beta03"))
+
     //navigation compose
     implementation("androidx.navigation:navigation-compose:2.7.6")
 
