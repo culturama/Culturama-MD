@@ -1,4 +1,4 @@
-package com.example.culturama.model
+package com.example.culturama.domain.model
 
 import androidx.compose.ui.res.stringResource
 import com.example.culturama.R

@@ -1,11 +1,11 @@
 package com.example.culturama.data.manager
 
-import com.example.culturama.model.CultureDataSource
-import com.example.culturama.model.FavCulture
+import com.example.culturama.domain.model.CultureDataSource
+import com.example.culturama.domain.model.FavCulture
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-class CultureRepository {
+class CultureRepositoryLocal {
     private val favCulture = mutableListOf<FavCulture>()
 
     init {
@@ -50,11 +50,11 @@ class CultureRepository {
 
     companion object {
         @Volatile
-        private var instance: CultureRepository? = null
+        private var instance: CultureRepositoryLocal? = null
 
-        fun getInstance(): CultureRepository =
+        fun getInstance(): CultureRepositoryLocal =
             instance ?: synchronized(this) {
-                CultureRepository().apply {
+                CultureRepositoryLocal().apply {
                     instance = this
                 }
             }

@@ -1,9 +1,9 @@
 package com.example.culturama.di
 
-import com.example.culturama.data.manager.CultureRepository
+import com.example.culturama.data.manager.CultureRepositoryLocal
 
 object Injection {
-    fun provideRepository(): CultureRepository {
-        return CultureRepository.getInstance()
+    fun provideRepository(): CultureRepositoryLocal {
+        return CultureRepositoryLocal.getInstance()
     }
 }

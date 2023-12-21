@@ -2,10 +2,10 @@ package com.example.culturama.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.culturama.data.manager.CultureRepository
+import com.example.culturama.data.manager.CultureRepositoryLocal
 import com.example.culturama.ui.screen.home.HomeViewModel
 
-class ViewModelFactory (private val repository: CultureRepository)
+class ViewModelFactory (private val repository: CultureRepositoryLocal)
     : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
