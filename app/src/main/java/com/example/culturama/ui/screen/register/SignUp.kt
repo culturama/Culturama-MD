@@ -39,6 +39,10 @@ import com.example.culturama.ui.theme.CulturamaTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUp(navController: NavHostController) {
+    // Variabel untuk menyimpan email dan password
+    val email = remember { mutableStateOf(TextFieldValue()) }
+    val password = remember { mutableStateOf(TextFieldValue()) }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -52,9 +56,6 @@ fun SignUp(navController: NavHostController) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            val email = remember { mutableStateOf(TextFieldValue()) }
-            val password = remember { mutableStateOf(TextFieldValue()) }
 
             Text(
                 text = "Sign Up",
@@ -81,8 +82,26 @@ fun SignUp(navController: NavHostController) {
             Box(
                 modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)
             ) {
+                // Tombol Sign Up dengan logika pendaftaran sederhana
                 Button(
-                    onClick = { /* Handle sign-up logic */ },
+                    onClick = {
+                        // Logika pendaftaran: tambahkan kode untuk menyimpan email dan password ke server atau penyimpanan lokal
+                        val enteredEmail = email.value.text
+                        val enteredPassword = password.value.text
+
+                        // Tambahkan logika pendaftaran sesuai kebutuhan Anda
+                        // Misalnya, validasi email, password, dan panggilan API pendaftaran
+                        if (isValidSignUp(enteredEmail, enteredPassword)) {
+                            // Jika pendaftaran berhasil, mungkin navigasikan pengguna ke layar lain
+                            // atau tampilkan pesan berhasil
+                            // Contoh:
+                            // navController.navigate(/* destination */)
+                        } else {
+                            // Jika pendaftaran gagal, tampilkan pesan kesalahan atau ambil tindakan yang sesuai
+                            // Contoh:
+                            // showMessage("Pendaftaran gagal. Silakan coba lagi.")
+                        }
+                    },
                     shape = RoundedCornerShape(50.dp),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -95,7 +114,9 @@ fun SignUp(navController: NavHostController) {
             Spacer(modifier = Modifier.height(20.dp))
             ClickableText(
                 text = AnnotatedString("Already have an account? Log in"),
-                onClick = { /* Handle navigation to login screen */ },
+                onClick = {
+                    navController.navigate("Login")
+                },
                 style = TextStyle(
                     fontSize = 14.sp,
                     color = Color.Gray
@@ -103,6 +124,13 @@ fun SignUp(navController: NavHostController) {
             )
         }
     }
+}
+
+// Fungsi untuk validasi pendaftaran
+fun isValidSignUp(email: String, password: String): Boolean {
+    // Implementasikan logika validasi pendaftaran sesuai kebutuhan Anda
+    // Misalnya, periksa apakah email valid dan password memenuhi persyaratan tertentu
+    return email.isNotBlank() && password.length >= 6
 }
 
 @Preview(showBackground = true)
