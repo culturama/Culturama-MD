@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -39,6 +40,7 @@ import com.example.culturama.ui.screen.detail.Story
 import com.example.culturama.ui.screen.detail.TouristDestination
 import com.example.culturama.ui.screen.detail.TraditionalArt
 import com.example.culturama.ui.screen.detail.TraditionalBuilding
+import com.example.culturama.ui.theme.CulturamaTheme
 
 data class Category(val name: String, val icon: Painter, val destinationCount: Int)
 
@@ -150,5 +152,14 @@ fun CategoryNavHost() {
                 }
             }
         }
+    }
+}
+@Preview
+@ExperimentalMaterial3Api
+@Composable
+fun CategoriesScreenPreview() {
+    CulturamaTheme {
+        val navController = rememberNavController()
+        CategoriesScreen(navController = navController)
     }
 }
