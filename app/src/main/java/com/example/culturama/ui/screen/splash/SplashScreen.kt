@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.culturama.ui.theme.Teal200
+import com.example.culturama.ui.theme.Teal300
 import com.example.culturama.R
 import com.example.culturama.ui.theme.CulturamaTheme
 import kotlinx.coroutines.delay
@@ -51,7 +51,7 @@ fun Splash (
 ) {
     Box(
         modifier = Modifier
-            .background(if (isSystemInDarkTheme()) Color.Black else Teal200)
+            .background(if (isSystemInDarkTheme()) Color.Black else Teal300)
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
