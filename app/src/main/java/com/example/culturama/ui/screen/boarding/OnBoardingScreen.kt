@@ -93,7 +93,7 @@ fun OnBoardingScreen (
                     onClick = {
                         scope.launch {
                             if (pagerState.currentPage == 2) {
-//                                navController.navigate(Screen.Home.route)
+//                                navController.navigate(Screen.Login.route)
                                 event(OnBoardingEvent.SaveAppEntry)
                             } else {
                                 pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
