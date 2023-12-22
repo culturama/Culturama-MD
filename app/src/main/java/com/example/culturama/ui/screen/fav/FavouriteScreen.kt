@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.culturama.R
 import com.example.culturama.ui.theme.CulturamaTheme
+import com.example.culturama.ui.theme.Montserrat
 
 data class FavouriteData(
     val name: String,
@@ -175,14 +176,16 @@ fun FavouriteItem(
                     style = MaterialTheme.typography.bodyLarge.copy(
                         color = if (index == selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
                         fontWeight = FontWeight.Bold
-                    )
+                    ),
+                    fontFamily = Montserrat
                 )
                 // Tampilkan kategori item favorit dengan teks abu-abu
                 Text(
                     text = data.category,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
-                    )
+                    ),
+                    fontFamily = Montserrat
                 )
                 // Gunakan Row untuk menata elemen UI secara horizontal
                 Row(
@@ -204,7 +207,8 @@ fun FavouriteItem(
                             text = data.rating.toString(),
                             style = MaterialTheme.typography.bodyLarge.copy(
                                 color = MaterialTheme.colorScheme.onSurface
-                            )
+                            ),
+                            fontFamily = Montserrat
                         )
                     }
                     // Tampilkan label item favorit dengan teks ungu jika dipilih
@@ -212,7 +216,8 @@ fun FavouriteItem(
                         text = if (index == selected) "item medium" else "",
                         style = MaterialTheme.typography.bodyLarge.copy(
                             color = MaterialTheme.colorScheme.primary
-                        )
+                        ),
+                        fontFamily = Montserrat
                     )
                 }
             }

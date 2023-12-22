@@ -4,6 +4,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -12,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -30,6 +34,7 @@ import com.example.culturama.ui.screen.home.components.HomeContent
 import com.example.culturama.ui.screen.home.components.RecommendationItem
 import com.example.culturama.ui.screen.home.components.Search
 import com.example.culturama.ui.theme.CulturamaTheme
+import com.example.culturama.ui.theme.Montserrat
 
 @Composable
 fun HomeScreen (
@@ -46,13 +51,22 @@ fun HomeScreen (
             }
             is UiState.Success -> {
                 Column {
-                    Text(
-                        text = "Explore the Culture Now",
-                        style = TextStyle(
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold
+                    Column (
+                        modifier = Modifier
+                            .padding(48.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                        Text(
+                            text = "Explore the Culture Now",
+                            style = TextStyle(
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Bold,
+                                fontFamily = Montserrat
+                            ),
+                            modifier = modifier
+                                .fillMaxWidth()
                         )
-                    )
+                    }
                     Search()
                     CategoryRow()
                     HomeContent(
