@@ -22,7 +22,6 @@ android {
         }
         buildConfigField("String", "API_KEY", "\"https://culturama-2023-408403.et.r.appspot.com/\"")
     }
-
     buildTypes {
         release {
             isMinifyEnabled = false
