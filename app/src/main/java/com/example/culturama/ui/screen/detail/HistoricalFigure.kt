@@ -78,7 +78,6 @@ fun HistoricalFigure() {
         }
     }
 }
-
 @ExperimentalMaterial3Api
 @Composable
 fun SearchBar(text: String, onTextChange: (String) -> Unit) {
@@ -98,7 +97,7 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_search),
                 contentDescription = "Ikona Pencarian",
-                tint = MaterialTheme.colorScheme.onSurface
+                tint = LocalContentColor.current
             )
             TextField(
                 value = text,
@@ -110,7 +109,7 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
                 maxLines = 1,
                 textStyle = MaterialTheme.typography.bodyLarge,
                 colors = TextFieldDefaults.textFieldColors(
-                    cursorColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = LocalContentColor.current,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 ),
@@ -118,7 +117,7 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
                     Text(
                         text = "Cari...",
                         style = MaterialTheme.typography.bodyLarge.copy(
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                            color = LocalContentColor.current.copy(alpha = 0.5f)
                         )
                     )
                 }
@@ -126,7 +125,6 @@ fun SearchBar(text: String, onTextChange: (String) -> Unit) {
         }
     }
 }
-
 @Composable
 fun HistoricalFigureItem(
     index: Int,
@@ -225,6 +223,7 @@ fun HistoricalFigureItem(
         }
     }
 }
+
 
 @Preview
 @ExperimentalMaterial3Api

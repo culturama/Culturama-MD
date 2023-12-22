@@ -23,6 +23,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.culturama.ui.theme.CulturamaTheme
 import androidx.navigation.NavGraphBuilder
+import com.example.culturama.ui.screen.boarding.OnBoardingScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -109,6 +110,7 @@ fun LoginPage(navController: NavHostController) {
         )
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun LoginPagePreview() {

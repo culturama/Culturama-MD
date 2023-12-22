@@ -7,6 +7,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -50,9 +53,9 @@ fun FavouriteScreen() {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-//            SearchBar(searchText.value) {
-//                searchText.value = it
-//            }
+            SearchBar(searchText.value) {
+              searchText.value = it
+              }
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -227,18 +230,31 @@ fun FavouriteItem(
                     .weight(1f),
                 contentAlignment = Alignment.TopEnd
             ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_heart),
-                    contentDescription = "Heart icon",
-                    tint = if (index == selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(
-                        alpha = 0.5f
-                    ),
-                    modifier = Modifier
-                        .clickable {
-                            // Tambahkan atau hapus dari favorit saat ikon hati diklik
-                            onAddToFavorites(data)
-                        }
-                )
+                var isFavorite = false
+
+                if (isFavorite) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fav_fill),
+                        contentDescription = "Heart icon",
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier
+                            .size(20.dp)
+                            .clickable {
+                                isFavorite = !isFavorite
+                            }
+                    )
+                } else {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fav),
+                        contentDescription = "Heart icon",
+                        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+                        modifier = Modifier
+                            .size(20.dp)
+                            .clickable {
+                                isFavorite = !isFavorite
+                            }
+                    )
+                }
             }
         }
     }
