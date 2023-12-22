@@ -7,26 +7,20 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import kotlinx.coroutines.delay
+import androidx.navigation.NavHostController
 import com.example.culturama.ui.theme.Teal300
 import com.example.culturama.R
 import com.example.culturama.ui.theme.CulturamaTheme
-import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen (
-//    navController: NavHostController
-) {
+fun SplashScreen(navController: NavHostController) {
     var startAnimation by remember { mutableStateOf(false) }
     val alphaAnimation = animateFloatAsState(
         targetValue = if (startAnimation) 1f else 0f,
@@ -38,17 +32,14 @@ fun SplashScreen (
     LaunchedEffect(key1 = true) {
         startAnimation = true
         delay(4000)
-//        navController.popBackStack()
-//        navController.navigate(Screen.OnBoarding.route)
+        navController.navigate("loginScreen")
     }
 
     Splash(alpha = alphaAnimation.value)
 }
 
 @Composable
-fun Splash (
-    alpha: Float
-) {
+fun Splash(alpha: Float) {
     Box(
         modifier = Modifier
             .background(if (isSystemInDarkTheme()) Color.Black else Teal300)
@@ -62,6 +53,7 @@ fun Splash (
         )
     }
 }
+
 
 @Preview
 @Composable

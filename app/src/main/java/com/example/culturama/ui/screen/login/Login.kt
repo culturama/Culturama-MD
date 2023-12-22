@@ -24,6 +24,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.culturama.ui.theme.CulturamaTheme
 import androidx.navigation.NavGraphBuilder
 import com.example.culturama.ui.screen.boarding.OnBoardingScreen
+import com.example.culturama.remote.api.response.LoginResponse
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,11 +72,26 @@ fun LoginPage(navController: NavHostController) {
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 onClick = {
-                    if (username.text == "user" && password.text == "password") {
-                        isAuthenticated = true
-                        navController.navigate("homeScreen")
-                    } else {
-                        isAuthenticated = false
+                    val apiService = ApiConfig.getApiService()
+                    val requestBody = mapOf(
+                        "email" to username.text,
+                        "password" to password.text
+                    )
+
+                    GlobalScope.launch(Dispatchers.IO) {
+                        try {
+                            val response: LoginResponse = apiService.loginUser(requestBody)
+                            if (!response.error) {
+                                isAuthenticated = true
+                                // Handle the token or other response data as needed
+                                navController.navigate("homeScreen")
+                            } else {
+                                isAuthenticated = false
+                                // Handle error, show a message, etc.
+                            }
+                        } catch (e: Exception) {
+                            // Handle network or other errors
+                        }
                     }
                 },
                 shape = RoundedCornerShape(50.dp),
