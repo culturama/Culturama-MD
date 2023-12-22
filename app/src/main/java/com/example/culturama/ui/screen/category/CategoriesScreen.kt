@@ -34,6 +34,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.culturama.R
 import com.example.culturama.ui.theme.CulturamaTheme
+import com.example.culturama.ui.theme.Montserrat
 
 data class Category(val name: String, val icon: Painter, val destinationCount: Int)
 
@@ -56,7 +57,8 @@ fun CategoriesScreen(navController: NavHostController) {
         Text(
             text = "Kategori",
             style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
+            fontFamily = Montserrat
         )
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(categories.size) { index ->
@@ -93,12 +95,14 @@ fun CategoriesScreen(navController: NavHostController) {
                         ) {
                             Text(
                                 text = category.name,
-                                style = MaterialTheme.typography.bodyLarge
+                                style = MaterialTheme.typography.bodyLarge,
+                                fontFamily = Montserrat
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
                                 text = "${category.destinationCount} Destinasi",
-                                style = MaterialTheme.typography.bodyLarge
+                                style = MaterialTheme.typography.bodyLarge,
+                                fontFamily = Montserrat
                             )
                         }
                         Icon(

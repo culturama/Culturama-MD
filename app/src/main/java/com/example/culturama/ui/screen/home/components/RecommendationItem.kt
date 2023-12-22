@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.culturama.R
 import com.example.culturama.ui.theme.CulturamaTheme
+import com.example.culturama.ui.theme.Montserrat
 
 @Composable
 fun RecommendationItem (
@@ -65,11 +66,13 @@ fun RecommendationItem (
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.titleLarge.copy(
                         fontWeight = FontWeight.Bold
-                    )
+                    ),
+                    fontFamily = Montserrat
                 )
                 Text(
                     text = categories,
-                    style = MaterialTheme.typography.titleSmall
+                    style = MaterialTheme.typography.titleSmall,
+                    fontFamily = Montserrat
                 )
             }
         }

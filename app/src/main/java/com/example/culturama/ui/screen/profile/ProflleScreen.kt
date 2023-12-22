@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.culturama.R
 import com.example.culturama.ui.theme.CulturamaTheme
+import com.example.culturama.ui.theme.Montserrat
 
 @Composable
 fun ProfileScreen(
@@ -56,11 +57,13 @@ fun ProfileScreen(
             Spacer(modifier = Modifier.height(16.dp)) // Add vertical space between image and text
             Text(
                 text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleLarge,
+                fontFamily = Montserrat
             )
             Text(
                 text = stringResource(R.string.profile),
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
+                fontFamily = Montserrat
             )
         }
     }
