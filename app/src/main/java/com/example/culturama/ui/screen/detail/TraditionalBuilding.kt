@@ -8,14 +8,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Place
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -61,9 +64,41 @@ fun TraditionalBuilding() {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        SearchBar(searchText) {
-            searchText = it
-        }
+        // Pencarian menggunakan TextField
+        TextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            value = searchText,
+            onValueChange = { searchText = it },
+            label = { Text("Cari...") },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = null,
+                    tint = LocalContentColor.current // Gunakan LocalContentColor untuk mengatur warna ikon pencarian
+                )
+            },
+            trailingIcon = {
+                if (searchText.isNotEmpty()) {
+                    Icon(
+                        imageVector = Icons.Default.Clear,
+                        contentDescription = null,
+                        tint = LocalContentColor.current, // Gunakan LocalContentColor untuk mengatur warna ikon hapus
+                        modifier = Modifier.clickable {
+                            // Hapus teks pencarian saat ikon clear diklik
+                            searchText = ""
+                        }
+                    )
+                }
+            },
+            colors = TextFieldDefaults.textFieldColors(
+                cursorColor = Color.Black, // Sesuaikan warna kursor
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            )
+        )
+
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
@@ -76,12 +111,12 @@ fun TraditionalBuilding() {
                     selected = selectedItem,
                     onSelect = { selectedItem = it }
                 ) { traditionalBuildingData ->
-                    if (traditionalBuildingList.contains(traditionalBuildingData)) {
-                        traditionalBuildingList.remove(traditionalBuildingData)
-                    } else {
-                        traditionalBuildingList.add(traditionalBuildingData)
+                        if (traditionalBuildingList.contains(traditionalBuildingData)) {
+                            traditionalBuildingList.remove(traditionalBuildingData)
+                        } else {
+                            traditionalBuildingList.add(traditionalBuildingData)
+                        }
                     }
-                }
             }
         }
     }
@@ -94,6 +129,9 @@ fun TraditionalBuildingItem(
     onSelect: (Int) -> Unit,
     onAddToFavorites: (TraditionalBuildingData) -> Unit
 ) {
+    // State untuk melacak status favorit
+    var isFavorite by remember { mutableStateOf(false) }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -104,12 +142,11 @@ fun TraditionalBuildingItem(
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(8.dp)
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(8.dp),
-                verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
                     painter = painterResource(id = data.image),
@@ -144,15 +181,17 @@ fun TraditionalBuildingItem(
                             .padding(8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
+                        // Menggunakan ikon berwarna atau tidak berdasarkan status favorit
                         Icon(
-                            imageVector = if (data.image == selected) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                            imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                             contentDescription = "Favorite icon",
-                            tint = if (data.image == selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(
+                            tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(
                                 alpha = 0.5f
                             ),
                             modifier = Modifier
                                 .size(20.dp)
                                 .clickable {
+                                    isFavorite = !isFavorite
                                     onAddToFavorites(data)
                                 }
                         )
